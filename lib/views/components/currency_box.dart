@@ -1,7 +1,19 @@
+import 'package:conversor_moedas/models/currency_model.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyBox extends StatelessWidget {
-  const CurrencyBox({super.key});
+  final List<CurrencyModel> items;
+  final CurrencyModel selectedItem;
+  final TextEditingController controller;
+  final void Function(CurrencyModel?) onChanged;
+
+  const CurrencyBox({
+    Key? key,
+    required this.items,
+    required this.controller,
+    required this.onChanged,
+    required this.selectedItem,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,28 +25,23 @@ class CurrencyBox extends StatelessWidget {
               flex: 1,
               child: SizedBox(
                 height: 63,
-                child: DropdownButton(
-                    value: 'Real',
+                child: DropdownButton<CurrencyModel>(
+                    value: selectedItem,
                     underline: Container(height: 1, color: Colors.amber),
-                    items: const [
-                      DropdownMenuItem(
-                        value: 'Real',
-                        child: Text('Real'),
-                      ),
-                      DropdownMenuItem(
-                        value: 'Dolar',
-                        child: Text('Dolar'),
-                      ),
-                    ],
-                    onChanged: (value) {}),
+                    items: items
+                        .map((e) =>
+                            DropdownMenuItem(value: e, child: Text(e.name)))
+                        .toList(),
+                    onChanged: onChanged),
               )),
           const SizedBox(
             width: 16,
           ),
-          const Expanded(
+          Expanded(
             flex: 4,
             child: TextField(
-                decoration: InputDecoration(
+                controller: controller,
+                decoration: const InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.amber)),
                     focusedBorder: UnderlineInputBorder(

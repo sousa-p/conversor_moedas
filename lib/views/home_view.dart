@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: const EdgeInsets.only(top: 100, right: 25, left: 25),
+          padding: const EdgeInsets.only(top: 100, right: 50, left: 50),
           child: Column(
             children: [
               Image.asset('assets/logo.png', width: 250),
@@ -58,11 +58,12 @@ class _HomeViewState extends State<HomeView> {
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 25)),
+                          horizontal: 50, vertical: 25),
+                      backgroundColor: Colors.amberAccent),
                   onPressed: () {
                     homeController.convert();
                   },
-                  child: const Text('Converter'))
+                  child: const Text('CONVERTER'))
             ],
           ),
         ),

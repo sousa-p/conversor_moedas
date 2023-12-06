@@ -1,3 +1,3 @@
 # Conversor Moedas
 
-Projeto simpeles em flutter para aprender a utilização do MVC.
+Projeto simples em flutter para aprender a utilização do MVC.
